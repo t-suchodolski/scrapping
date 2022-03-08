@@ -13,3 +13,4 @@ print(float(items1))
 ceny_tags = price.select('.text-center .td')
 ceny = [ct.get_text() for ct in ceny_tags]
 print(ceny)
+type(ceny)
