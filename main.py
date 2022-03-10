@@ -2,11 +2,16 @@ import requests
 from datetime import date
 import pandas as pd
 from bs4 import BeautifulSoup
+from csv import reader
+from csv import writer
+import csv
+
 
 page = requests.get("https://www.autocentrum.pl/paliwa/ceny-paliw/")
 soup = BeautifulSoup(page.content, 'html.parser')
 price = soup.find(class_="table-responsive")
 items = price.find('td', class_='text-center').get_text()
+
 
 #DISTRICTS
 all_districts = []
@@ -39,5 +44,8 @@ print(archive_name)
 df.to_csv(archive_name)
 
 
-
-
+time_95 = pd.read_csv('C:\\Users\Tomek\PycharmProjects\scrapping\TIME\Time_95.csv')
+new_column = pd.DataFrame({today: F_95})
+column_values = pd.Series(F_95)
+df1 = pd.concat([time_95, new_column], axis=1)
+df1.to_csv('C:\\Users\Tomek\PycharmProjects\scrapping\TIME\Time_95.csv')
