@@ -2,9 +2,7 @@ import requests
 from datetime import date
 import pandas as pd
 from bs4 import BeautifulSoup
-from csv import reader
-from csv import writer
-import csv
+
 
 
 page = requests.get("https://www.autocentrum.pl/paliwa/ceny-paliw/")
